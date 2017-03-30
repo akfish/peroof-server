@@ -1,0 +1,20 @@
+{
+  "name": "peroof-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "node_modules/.bin/tsc",
+    "start": "node lib/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "akfish",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^2.2.2"
+  },
+  "dependencies": {
+    "@types/hapi": "^16.0.0",
+    "hapi": "^16.1.0"
+  }
+}
