@@ -25,6 +25,7 @@ interface Config {
     github: {
         client_id: string
         client_secret: string
+        timeout: number
     }
 }
 
@@ -37,7 +38,8 @@ const CONFIG_SCHEMA = Joi.object().keys({
     port: Joi.number().min(1).max(65535).required(),
     github: Joi.object().keys({
         client_id: Joi.string().min(1).required().not('YOUR_CLIENT_ID'),
-        client_secret: Joi.string().min(1).required().not('YOUR_CLIENT_SECRET')
+        client_secret: Joi.string().min(1).required().not('YOUR_CLIENT_SECRET'),
+        timeout: Joi.number()
     }).required()
 })
 
@@ -50,7 +52,10 @@ validateConfig(config)
 
 server.connection({
     host: 'localhost',
-    port: config.port
+    port: config.port,
+    routes: {
+        cors: true
+    }
 })
 
 interface OAuthUserPayload {
@@ -110,11 +115,14 @@ function getAccessToken(payload: OAuthPayload, cb: (err: Error, token?: GitHubAc
         headers: {
             'Accept': 'application/json'
         },
+        timeout: config.github.timeout,
         form: payload
     }, (err, response, body) => {
+        console.log('Got response')
         if (err) return cb(err)
         try {
             let ghr: GitHubResponse = JSON.parse(body)
+            console.log(ghr)
             if (isGitHubAccessToken(ghr)) {
                 cb(null, ghr)
             } else if (isGitHubErrorResponse(ghr)) {
@@ -142,6 +150,8 @@ server.route({
     },
     handler: (request, reply) => {
         let payload = extendPayload(<OAuthUserPayload>pick(request.payload, 'state', 'code'))
+        server.log('info', request.payload)
+        console.log(request.payload)
         getAccessToken(payload, (err, token) => {
             if (err) {
                 let message = err.message
@@ -157,13 +167,28 @@ server.route({
                             boom = Boom.badRequest(message, raw)
                             break
                     }
+                    server.log('error', raw)
+                    console.error(raw)
                 } else {
                     let t = + new Date()
-                    boom = Boom.badImplementation('Internal Server Error', { error: 'internal_error', t })
+                    let { code } = <NodeJS.ErrnoException>err
+                    switch (code) {
+                        case 'ETIMEDOUT':
+                        case 'ECONNREFUSED':
+                        case 'ECONNRESET':
+                            boom = Boom.gatewayTimeout(`Failed to communicate with GitHub API server [${code}]`)
+                            break
+                        default:
+                            boom = Boom.badImplementation('Internal Server Error', { error: 'internal_error', t })
+                            break
+                    }
                     server.log('error', err, t)
+                    console.error(err)
                 }
                 reply(boom)
             } else {
+                server.log('info', token)
+                console.log(token)
                 reply(token)
             }
         })
