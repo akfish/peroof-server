@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@types/bluebird@^3.5.2":
+  version "3.5.2"
+  resolved "http://registry.npm.taobao.org/@types/bluebird/download/@types/bluebird-3.5.2.tgz#ecf1104217495e50fe0b588d538146cd6f733b89"
+
 "@types/boom@^0.0.33":
   version "0.0.33"
   resolved "https://registry.yarnpkg.com/@types/boom/-/boom-0.0.33.tgz#5fffdd8a2f430d9e85e664bb1abaa3932b6a4295"
@@ -35,6 +39,12 @@
 "@types/node@*":
   version "7.0.12"
   resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-7.0.12.tgz#ae5f67a19c15f752148004db07cbbb372e69efc9"
+
+"@types/redis@^0.12.36":
+  version "0.12.36"
+  resolved "http://registry.npm.taobao.org/@types/redis/download/@types/redis-0.12.36.tgz#61df652a269af425fe2e9ee95cdfa175577b4c3b"
+  dependencies:
+    "@types/node" "*"
 
 "@types/request@^0.0.42":
   version "0.0.42"
@@ -105,6 +115,10 @@ bcrypt-pbkdf@^1.0.0:
   resolved "https://registry.yarnpkg.com/bcrypt-pbkdf/-/bcrypt-pbkdf-1.0.1.tgz#63bc5dcb61331b92bc05fd528953c33462a06f8d"
   dependencies:
     tweetnacl "^0.14.3"
+
+bluebird@^3.5.0:
+  version "3.5.0"
+  resolved "http://registry.npm.taobao.org/bluebird/download/bluebird-3.5.0.tgz#791420d7f551eea2897453a8a77653f96606d67c"
 
 boom@2.x.x:
   version "2.10.1"
@@ -201,6 +215,10 @@ delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
 
+double-ended-queue@^2.1.0-0:
+  version "2.1.0-0"
+  resolved "http://registry.npm.taobao.org/double-ended-queue/download/double-ended-queue-2.1.0-0.tgz#103d3527fd31528f40188130c841efdd78264e5c"
+
 ecc-jsbn@~0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.1.tgz#0fc73a9ed5f0d53c38193398523ef7e543777505"
@@ -232,6 +250,10 @@ getpass@^0.1.1:
   resolved "https://registry.yarnpkg.com/getpass/-/getpass-0.1.6.tgz#283ffd9fc1256840875311c1b60e8c40187110e6"
   dependencies:
     assert-plus "^1.0.0"
+
+hapi-rate-limiter@^2.0.0:
+  version "2.0.0"
+  resolved "http://registry.npm.taobao.org/hapi-rate-limiter/download/hapi-rate-limiter-2.0.0.tgz#bd8b3cfb17585ab0b3b974e5018ad8345ef34ad4"
 
 hapi@^16.1.0:
   version "16.1.0"
@@ -470,6 +492,22 @@ punycode@^1.4.1:
 qs@~6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.4.0.tgz#13e26d28ad6b0ffaa91312cd3bf708ed351e7233"
+
+redis-commands@^1.2.0:
+  version "1.3.1"
+  resolved "http://registry.npm.taobao.org/redis-commands/download/redis-commands-1.3.1.tgz#81d826f45fa9c8b2011f4cd7a0fe597d241d442b"
+
+redis-parser@^2.5.0:
+  version "2.6.0"
+  resolved "http://registry.npm.taobao.org/redis-parser/download/redis-parser-2.6.0.tgz#52ed09dacac108f1a631c07e9b69941e7a19504b"
+
+redis@^2.7.1:
+  version "2.7.1"
+  resolved "http://registry.npm.taobao.org/redis/download/redis-2.7.1.tgz#7d56f7875b98b20410b71539f1d878ed58ebf46a"
+  dependencies:
+    double-ended-queue "^2.1.0-0"
+    redis-commands "^1.2.0"
+    redis-parser "^2.5.0"
 
 request@^2.81.0:
   version "2.81.0"

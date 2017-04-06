@@ -15,17 +15,22 @@
     "typescript": "^2.2.2"
   },
   "dependencies": {
+    "@types/bluebird": "^3.5.2",
     "@types/boom": "^0.0.33",
     "@types/hapi": "^16.0.0",
     "@types/joi": "^10.0.1",
     "@types/lodash": "^4.14.59",
     "@types/nconf": "^0.0.34",
+    "@types/redis": "^0.12.36",
     "@types/request": "^0.0.42",
+    "bluebird": "^3.5.0",
     "boom": "^4.3.1",
     "hapi": "^16.1.0",
+    "hapi-rate-limiter": "^2.0.0",
     "joi": "^10.3.1",
     "lodash": "^4.17.4",
     "nconf": "^0.8.4",
+    "redis": "^2.7.1",
     "request": "^2.81.0"
   }
 }
