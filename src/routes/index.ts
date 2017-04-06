@@ -1,6 +1,7 @@
 import { Server, IRouteConfiguration } from 'hapi'
 import loadConfig from '../config'
 import snakeCase = require('lodash/snakeCase')
+const config = loadConfig()
 
 interface RouteDescriptor {
     name: string
@@ -34,8 +35,9 @@ function makeRootRoute(): IRouteConfiguration {
         path: '/',
         method: 'get',
         handler: (request, reply) => {
-            let { uri } = request.connection.info
-            reply(buildEndpointList(uri))
+            let { uri, protocol } = request.connection.info
+            let host = config.host
+            reply(buildEndpointList(host ? `${protocol}://${host}` : uri))
         }
     }
 

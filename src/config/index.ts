@@ -6,6 +6,7 @@ import defaults from './defaults'
 
 export interface Config {
     configFile?: string
+    host?: string
     port: number
     github: {
         client_id: string
@@ -22,6 +23,7 @@ export const CONFIG_SCHEMA = Joi.object().keys({
         client_secret: Joi.string().min(1).required().not('YOUR_CLIENT_SECRET'),
         timeout: Joi.number()
     }).required(),
+    host: Joi.string(),
     redis: Joi.object().keys({
         host: Joi.string().min(1),
         port: Joi.number().min(1).max(65535)
@@ -45,6 +47,7 @@ export default function loadConfig() {
             })
 
         config = {
+            host: nconf.get('host'),
             port: nconf.get('port'),
             github: nconf.get('github'),
             redis: nconf.get('redis')
