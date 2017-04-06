@@ -6,6 +6,7 @@
   "scripts": {
     "build": "node_modules/.bin/tsc",
     "start": "node lib/index.js",
+    "postinstall": "npm start build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "akfish",
