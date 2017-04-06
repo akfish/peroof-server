@@ -40,7 +40,7 @@ module.exports = {
       ref  : PROD_REF,
       repo : REPO_URL,
       path : PROD_DEPLOY_PATH,
-      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production'
+      'post-deploy' : 'yarn install && pm2 reload ecosystem.config.js --env production'
     },
     dev : {
       user : USER,
@@ -49,7 +49,7 @@ module.exports = {
       ref  : DEV_REF,
       repo : REPO_URL,
       path : DEV_DEPLOY_PATH,
-      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env dev',
+      'post-deploy' : 'yarn install && pm2 reload ecosystem.config.js --env dev',
     }
   }
 }
