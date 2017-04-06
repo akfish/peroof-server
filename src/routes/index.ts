@@ -34,6 +34,13 @@ function makeRootRoute(): IRouteConfiguration {
     return {
         path: '/',
         method: 'get',
+        config: {
+            plugins: {
+                rateLimit: {
+                    enabled: true
+                }
+            },
+        },
         handler: (request, reply) => {
             let { uri, protocol } = request.connection.info
             let host = config.host

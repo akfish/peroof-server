@@ -14,9 +14,14 @@ server.connection({
     }
 })
 
+// Routes
 Routes.push('GitHub Access Token', '/oauth/github/access_token')
-
 Routes.regsiter(server)
+
+// Plugins
+server.register([
+    require('./plugins/rate-limitter')
+])
 
 server.start((err) => {
     if (err) {

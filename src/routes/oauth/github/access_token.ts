@@ -9,6 +9,11 @@ const route: Hapi.IRouteConfiguration = {
     path: '',
     method: 'post',
     config: {
+        plugins: {
+            rateLimit: {
+                enabled: true
+            }
+        },
         validate: {
             payload: {
                 code: Joi.string().min(1),

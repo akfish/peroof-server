@@ -1,7 +1,17 @@
 {
     "port": 3333,
+    "host": "auth.ak.fish",
     "github": {
         "client_id": "YOUR_CLIENT_ID",
-        "client_secret": "YOUR_CLIENT_SECRET"
+        "client_secret": "YOUR_CLIENT_SECRET",
+        "timeout": "10000"
+    },
+    "redis": {
+        "host": "localhost",
+        "port": 6379
+    },
+    "rateLimit": {
+        "limit": 10,
+        "window": 60
     }
 }
