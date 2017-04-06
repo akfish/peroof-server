@@ -17,7 +17,7 @@ module.exports = {
       name      : 'GitHub OAuth Proxy',
       script    : 'lib/index.js',
       env: {
-        configFile: '~/.peroof/config.json'
+        configFile: '/home/node/.peroof/config.json'
       },
       env_production : {
         NODE_ENV: 'production'
