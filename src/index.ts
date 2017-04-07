@@ -10,7 +10,14 @@ server.connection({
     host: 'localhost',
     port: config.port,
     routes: {
-        cors: true
+        cors: {
+            origin: ['*'],
+            additionalExposedHeaders: [
+                'X-Rate-Limit-Limit',
+                'X-Rate-Limit-Remaining',
+                'X-Rate-Limit-Reset',
+            ] 
+        }
     }
 })
 
